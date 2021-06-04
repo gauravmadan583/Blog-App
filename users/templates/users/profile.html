@@ -1,7 +1,34 @@
 {% extends 'wall/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 mt-3">
+                <img class="" src="{{ user.profile.image.url }}">
+            </div>
+            <div class="col-8 mt-3 align-items-center">
+                <div class="row">
+                    <h1> {{ user.username }} </h1>
+                    <button class="btn btn-danger ml-5 float-right">Subscribe</button>
+                </div>
+                <h2 class="row"> -Hello </h2>
+                <h2 class="row"> I'm {{ user.name }} Gaurav Madan</h2>
+                <p class="row"> {{ user.bio }} A Ui and UX designer, product designer, content creator and creative director.Ofcourse there’s so much to know about me than just a few fancy titles.</p>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-2 border border-danger rounded">
+                        {{ user.number_of_posts }} foodprints
+                    </div>
+                    <div class="col-2 offset-2 border border-danger rounded">
+                        {{ user.number_of_subscribers }} Subscribers
+                    </div>
+                    <div class="col-2 offset-2 border border-danger rounded">
+                        Contact
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- <div class="content-section">
     <div class="media">
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
@@ -24,5 +51,5 @@
             </button>
         </div>
     </form>
-</div>
+</div> -->
 {% endblock content %}

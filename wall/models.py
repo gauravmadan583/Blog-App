@@ -4,28 +4,26 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 class Post(models.Model):
-    title = models.CharField(max_length = 100)
-    content = models.TextField()
+    caption = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    # images = models.FileField(blank=True)
-    # comments = models.TextField(blank=True)
-
-    def __str__(self):
-        return self.title
+    image = models.ImageField(upload_to='posts/', default='logo.png')
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
 
-# class PostImage(models.Model):
-#     post = models.ForeignKey(Post, default=None, on_delete=models.CASCADE)
-#     images = models.FileField(upload_to='post_images')
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.TextField()
+    date_commented = models.DateTimeField(default=timezone.now)
 
-# class PostComment(models.Model):
-#     comment = models.TextField()
-#     date_commented = models.DateTimeField(default=timezone.now)
-#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-#     author = models.ForeignKey(User, on_delete=models.CASCADE)
+class Like(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_liked = models.DateTimeField(default=timezone.now)
 
-#     def __str__(self):
-#         return self.comment
+    class Meta:
+        unique_together = ("post", "user")
+
+

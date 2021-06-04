@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment, Like
 # from .models import PostImage, PostComment
  
 # class PostImageAdmin(admin.StackedInline):
@@ -9,6 +9,8 @@ from .models import Post
 #     model = PostComment
 
 admin.site.register(Post)
+admin.site.register(Comment)
+admin.site.register(Like)
 # class PostAdmin(admin.ModelAdmin):
 #     inlines = [PostImageAdmin, PostCommentAdmin]
     

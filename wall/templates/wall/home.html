@@ -1,20 +1,38 @@
 {% extends "wall/base.html" %}
 
 {% block content %}
-    {% for post in posts %}
-        <article class="media content-section">
-            <img src="{{ post.author.profile.image.url }}" class="rounded-circle article-img">
-            <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-                    <small class="text-muted">{{ post.date_posted }}</small>
+<div class="container-fluid">
+    <div class="row">
+        {% for post in posts %}
+            <div class="card col-lg-3 offset-lg-1 mt-3 p-0 border border-dark">
+                <img class="card-image-top" src="{{ post.image.url }}" alt="Post's Images">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="
+                            <!-- {{ post.author.profile.image.url }} -->
+                            " class="post-author-img rounded-circle">
+                        </div>
+                        <div class="col-9 p-1">
+                            <h5><a class="" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></h5>
+                        </div>
+                    </div>
+                    <p class="post-content">{{ post.caption }}</p>
+                    <div class="row p-2 m-0">
+                        <div class="col-2 p-0 d-flex align-items-center justify-content-center"><span
+                                class="fa fa-heart"></span></div>
+                        <div class="col-8 p-0 border border-dark rounded"><span class="fa fa-commenting"></span> Comment
+                        </div>
+                        <div class="col-2 p-0 d-flex align-items-center justify-content-center"><span
+                                class="fa fa-paper-plane"></span></div>
+                    </div>
                 </div>
-                <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-                <p class="article-content">{{ post.content }}</p>
             </div>
-        </article>
-    {% endfor %}
-    {% if is_paginated %}
+        {% endfor %}
+    </div>
+</div>
+
+<!-- {% if is_paginated %}
         {% if page_obj.has_previous %}
             <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
             <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
@@ -32,5 +50,5 @@
             <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number">Next</a>
             <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
         {% endif %}
-    {% endif %}
+    {% endif %} -->
 {% endblock content %}

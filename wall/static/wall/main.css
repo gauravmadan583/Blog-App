@@ -17,15 +17,15 @@ background-color: #5f788a;
 }
 
 .site-header .navbar-nav .nav-link {
-color: #cbd5db;
+    color: white;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-color: #ffffff;
+    color: #ffffff;
 }
 
 .site-header .navbar-nav .nav-link.active {
-font-weight: 500;
+    font-weight: 500;
 }
 
 .content-section {
@@ -81,4 +81,42 @@ margin-bottom: 16px;
 
 .account-heading {
 font-size: 2.5rem;
+}
+
+.navbar {
+    height: 50px;
+    background-color: whitesmoke, 100%;
+    opacity: 1;
+    z-index: 1;
+}
+
+.logo {
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.card {
+    border-radius: 10%;
+}
+
+.card-image-top {
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+}
+.post-author-img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    display: block;
+}
+
+.post-content {
+    margin:5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
